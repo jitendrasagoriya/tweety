@@ -16,7 +16,7 @@ import twitter4j.TwitterException;
 public class TweeterController {
 
 	
-	@PostMapping()
+	@GetMapping()
 	public ResponseEntity<?> fetchTimeLine(@RequestHeader(name="access") String accessToken) {
 		try {
 			return new ResponseEntity<List<String>>(TweeterService.getTimeLine(false,accessToken),HttpStatus.OK) ;
@@ -26,7 +26,7 @@ public class TweeterController {
 
 	}
 	
-	@PostMapping(path="self")
+	@GetMapping(path="self")
 	public ResponseEntity<?> fetchTimeLine() {
 		try {
 			return new ResponseEntity<List<String>>(TweeterService.getTimeLine(true,null),HttpStatus.OK) ;
@@ -35,5 +35,7 @@ public class TweeterController {
 		}
 
 	}
+	
+	
 
 }
