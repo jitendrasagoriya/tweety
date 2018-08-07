@@ -3,9 +3,12 @@ package com.jitendra.tweety.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
 import org.springframework.stereotype.Service;
 
+ 
 import twitter4j.DirectMessage;
+ 
 import twitter4j.Query;
 import twitter4j.QueryResult;
 import twitter4j.Status;
@@ -17,11 +20,14 @@ import twitter4j.conf.ConfigurationBuilder;
 @Service
 public class TweeterService {
 	
+	private static final Logger logger = org.slf4j.LoggerFactory.getLogger(TweeterService.class);
+	
 	 
 	public static Twitter getTwitterinstance() {
 		/**
 		 * if not using properties file, we can set access token by following way
 		 */
+		logger.info("getTwitterinstance : self");
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 		cb.setDebugEnabled(true)
 		  .setOAuthConsumerKey("lH4fyE00ULszvOT1Ym3cCC8Vl")
@@ -40,7 +46,7 @@ public class TweeterService {
 		/**
 		 * if not using properties file, we can set access token by following way
 		 */
-		
+		logger.info("getTwitterinstance : header");
 		String[] assesstokens = accessToken.split(",");
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 		cb.setDebugEnabled(true)
